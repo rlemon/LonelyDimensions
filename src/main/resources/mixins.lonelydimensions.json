@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "package": "ca.rlemon.lonelydimensions.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "nomadmod.refmap.json",
+  "mixins": [
+    "MixinBaseFireBlock",
+    "MixinEntity"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8.5"
+}
