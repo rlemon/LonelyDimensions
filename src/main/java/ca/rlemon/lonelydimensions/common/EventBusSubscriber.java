@@ -79,6 +79,9 @@ public class EventBusSubscriber {
             ResourceKey<Level> levelKey = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(LonelyDimensions.MOD_ID, player.getUUID().toString()));
             if( !player.getLevel().dimension().equals(levelKey) ) {
                 event.setCanceled(true);
+                if( player.isSleeping() ) {
+                    player.stopSleeping();
+                }
                 BlockPos attemptedBed = event.getNewSpawn();
                 player.getLevel().explode(null, DamageSource.badRespawnPointExplosion(), null, attemptedBed.getX() + 0.5D, attemptedBed.getY() + 0.5D, attemptedBed.getZ() + 0.5D, 5.0F, true, Explosion.BlockInteraction.NONE);
             }
