@@ -3,10 +3,8 @@ package ca.rlemon.lonelydimensions.common.worldgen;
 import ca.rlemon.lonelydimensions.common.CommonConfig;
 import ca.rlemon.lonelydimensions.common.LonelyDimensions;
 import com.google.common.collect.ImmutableList;
-import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
-import net.minecraft.locale.Language;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtIo;
 import net.minecraft.resources.ResourceKey;
@@ -16,7 +14,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.*;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
@@ -58,14 +55,14 @@ public class LonelyDimensionsGenerator {
     @Nullable
     public static Pair<BoundingBox, BlockPos> generateStartingStructure(ServerLevel serverLevel, BlockPos blockPos) {
 
-        // Load the NBT structure from the file
+        // make this come from the config
         ResourceLocation islandLocation = new ResourceLocation(LonelyDimensions.MOD_ID, "structures/vh_starting_structure.nbt");
 
         CompoundTag structureTag = loadStructureFromFile(serverLevel, islandLocation);
 
         if (structureTag != null) {
 
-            // Paste the NBT structure at the player's spawn location
+            // structure + jigsaws?
             StructureTemplate template = new StructureTemplate();
             template.load(structureTag);
             BoundingBox box = template.getBoundingBox(blockPos, Rotation.NONE, blockPos, Mirror.NONE);
